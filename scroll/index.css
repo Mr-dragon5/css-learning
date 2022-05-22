@@ -1,0 +1,97 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:700,400';
+body {
+  background: #59ABE3;
+  font-family: Roboto;
+  font-size: 1.1em;
+  color: #FFF;
+}
+
+.text {
+  position: relative;
+  margin: 10px auto;
+  height: 30px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  margin: 75px auto;
+  min-height: 1200px;
+  max-width: 1300px;
+}
+
+.box {
+  position: fixed;
+  height: 200px;
+  width: 200px;
+  background: #FFF;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cover {
+  position: absolute;
+  background: #59ABE3;
+}
+
+.cover-top {
+  height: 70px;
+  width: 114px;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  -webkit-clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+.cover-bottom {
+  height: 70px;
+  width: 114px;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.cover-left {
+  height: 200px;
+  width: 75px;
+  top: 50%;
+  left: -1px;
+  /*above^ = monkey patch. Somehow it shows a sliver of white on preview */
+  transform: translateY(-50%);
+  clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  -webkit-clip-path: polygon(0 0, 0% 100%, 100% 50%);
+}
+
+.cover-right {
+  height: 200px;
+  width: 75px;
+  right: -1px;
+  clip-path: polygon(0 50%, 100% 100%, 100% 0);
+  -webkit-clip-path: polygon(0 50%, 100% 100%, 100% 0);
+}
+
+.iphone-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 300px;
+  width: 300px;
+  z-index: 10;
+  color: black;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.iphone-x {
+  opacity: 0;
+  display: none;
+}

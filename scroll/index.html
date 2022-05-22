@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="text">Scroll down</div>
+
+    <div class="container">
+        <div class="box">
+            <div class="iphone-text">
+                <div class="iphone-x">iPhone. X.</div>
+            </div>
+            <div class="cover cover-top"></div>
+            <div class="cover cover-right"></div>
+            <div class="cover cover-bottom"></div>
+            <div class="cover cover-left"></div>
+        </div>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var boxElement = $(".box");
+            var coverTopElement = $(".cover-top");
+            var coverBottomElement = $(".cover-bottom");
+            var coverLeftElement = $(".cover-left");
+            var coverRightElement = $(".cover-right");
+            var iphoneXElement = $(".iphone-x");
+
+            var updatePositions = function (box, cover, opacity) {
+                boxElement.css({
+                    transform: "translateX(-50%) scale(" + box + ")"
+                });
+                coverTopElement.css({
+                    transform: "translateX(-50%)" + "translateY(-" + cover + "%)"
+                });
+                coverBottomElement.css({
+                    transform: "translateX(-50%)" + "translateY(" + cover + "%)"
+                });
+                coverLeftElement.css({
+                    transform: "translateY(-50%)" + "translateX(-" + cover + "%)"
+                });
+                coverRightElement.css({
+                    transform: "translateX(" + cover + "%)"
+                });
+                iphoneXElement.css({
+                    opacity: opacity
+                });
+            };
+
+            $(window).scroll(function () {
+                var newLocation = $(document).scrollTop();
+                var scaleLocation = newLocation > 125 ? 125 : newLocation;
+                var newScale = 1 + scaleLocation / 125;
+
+                var coverLocation = newLocation < 125 ? 125 : newLocation;
+                var modifyTranslate = ((coverLocation - 125) * 50) / 125;
+
+                var opacityLocation = newLocation < 225 ? 255 : newLocation;
+                var modifyOpacity = (opacityLocation - 250) * 0.002;
+
+                updatePositions(newScale, modifyTranslate, modifyOpacity);
+            });
+        });
+    </script>
+</body>
+
+</html>
